@@ -1,0 +1,54 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 1, 2018, 5:02:49 PM
+    Author     : Andrew
+*/
+html{
+    font-family: Arial;
+    font-weight: bold;
+    background-image: url("https://images.axios.com/Sx5BclO5J9YlC4m1FChQ25MbMac=/0x568:5760x3808/1920x1080/2018/04/03/1522766252447.jpg");
+}
+button{
+    background-color: green;
+    width: 200px;
+    height: 100px;
+    color: white;
+    font-family: Arial;
+    font-weight: bold;
+    margin: 30px 30px;
+}
+
+.main{
+    margin: 10% 25%;
+    height: 500px;
+    background-color: #ffe08f;
+    border: 2px solid black;
+    
+}
+
+.btns-cont{
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+}
+
+.btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.btnstxt{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+h3{
+    display: flex;
+    justify-content: center;
+}
