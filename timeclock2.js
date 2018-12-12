@@ -99,49 +99,71 @@ function onClockIn() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-           alert("Success");
+            alert("Success");
         }
     };
     xhttp.open("GET", "php-onclockin.php", true);
     xhttp.send();
-};
+}
+
 
 function onClockOut() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-           alert("Success");
+            alert("Success");
         }
     };
     xhttp.open("GET", "php-onclockout.php", true);
     xhttp.send();
-};
+}
 
-//function onClockIn() {
-//    var xhttp = new XMLHttpRequest();
-//    xhttp.onreadystatechange = function () {
-//        if (this.readyState == 4 && this.status == 200) {
-//           alert("Successfully added data!");
-//        }
-//    };
-//    xhttp.open("POST", "php-onclockin.php", true);
-//    xhttp.send(name);
-//};
-//var username = "Andrew";
-//
-//function onClockIn2() {
-//    $("#clockin").click(function () {
-//        $.ajax({
-//            url: "php-onclockin.php",
-//            method: 'get',
-//            data: {name:username},
-//            success: function (data) {
-//                alert(result);
-//            },
-//            error: function (data) {
-//                alert("Error");
-//            }
-//        });
-//    });
-//}
-//;
+function login(){
+    $(function () {
+        var text = $("#login").val();
+        $("#btn0").click(function () {
+            text += "0";
+            $("#login").val(text);
+        });
+        $("#btn1").click(function () {
+            text += "1";
+            $("#login").val(text);
+        });
+        $("#btn2").click(function () {
+            text += "2";
+            $("#login").val(text);
+        });
+        $("#btn3").click(function () {
+            text += "3";
+            $("#login").val(text);
+        });
+        $("#btn4").click(function () {
+            text += "4";
+            $("#login").val(text);
+        });
+        $("#btn5").click(function () {
+            text += "5";
+            $("#login").val(text);
+        });
+        $("#btn6").click(function () {
+            text += "6";
+            $("#login").val(text);
+        });
+        $("#btn7").click(function () {
+            text += "7";
+            $("#login").val(text);
+        });
+        $("#btn8").click(function () {
+            text += "8";
+            $("#login").val(text);
+        });
+        $("#btn9").click(function () {
+            text += "9";
+            $("#login").val(text);
+        });
+        $("#btnReset").click(function () {
+            text = "";
+            $("#login").val(text);
+        });
+    });
+}
