@@ -14,23 +14,28 @@
             <h3 id="time">Current time is: </h3>
 
             <div class="btns-cont">
-                <div class="btnstxt">
-                    <p id="clockin">Clock-in time: </p>
-                    <p id="clockout">Clock-out time: </p>
+                <form method="POST" action=logincheck.php class="loginInfo" target="_self">
+                    ID: <input type="text" id="login" name="ID" value="Login ID">
+                    <input type="submit" value="Login">
+                </form>
+                
+                <div class="loginLayout">
+                    <button type="button" id="btn0" class="btnLogin" onclick="login()">0</button>
+                    <button type="button" id="btn1" class="btnLogin" onclick="login()">1</button>
+                    <button type="button" id="btn2" class="btnLogin" onclick="login()">2</button>
+                    <button type="button" id="btn3" class="btnLogin" onclick="login()">3</button>
+                    <button type="button" id="btn4" class="btnLogin" onclick="login()">4</button>
+                    <button type="button" id="btn5" class="btnLogin" onclick="login()">5</button>
+                    <button type="button" id="btn6" class="btnLogin" onclick="login()">6</button>
+                    <button type="button" id="btn7" class="btnLogin" onclick="login()">7</button>
+                    <button type="button" id="btn8" class="btnLogin" onclick="login()">8</button>
+                    <button type="button" id="btn9" class="btnLogin" onclick="login()">9</button>
                 </div>
-                <div class="btns">       
-                    <button type="button" onclick="clockIn('clockin'); resetBtnTxt('clockin', clock.inText)">Clock In</button>
-                    <button type="button" onclick="clockOut('clockout'); resetBtnTxt('clockout', clock.outText2)">Clock Out</button>
+                
+                <div id="resetBtnDiv" class="resetBtnDiv">
+                    <button type="button" id="btnReset" class="btnLoginReset" onclick="login()">Reset</button>
                 </div>
-
-                <div  class="btnstxt">
-                    <p id="breakout">Break-out time: </p>
-                    <p id="breakin">Break-in time: </p>
-                </div>
-                <div class="btns">
-                    <button type="button" onclick="breakOut('breakout'); resetBtnTxt('breakout', rest.outText)">Break Out</button>
-                    <button type="button" onclick="breakIn('breakin'); resetBtnTxt('breakin', rest.inText2)">Break In</button>
-                </div>
+                
             </div>
 
         </div>
