@@ -7,6 +7,7 @@ var clock = {
     outText: "Not clocked in.",
     outText2: "Clock-out time is: "
 };
+
 var rest = {
     bool: false,
     out: 0,
@@ -16,8 +17,6 @@ var rest = {
     inText: "Not on break.",
     inText2: "Break-in time is: "
 };
-
-var x = 0;
 
 function clockIn(id) {
     switch (clock.bool) {
@@ -33,7 +32,7 @@ function clockIn(id) {
             document.getElementById(id).innerHTML = clock.inText2 + clock.in;
             break;
     }
-}
+};
 
 function clockOut(id) {
     switch (clock.bool) {
@@ -46,10 +45,10 @@ function clockOut(id) {
             clock.bool = false;
             clock.out = t;
             document.getElementById(id).innerHTML = clock.outText2 + clock.out;
-            onClockOut()
+            onClockOut();
             break;
     }
-}
+};
 
 
 function breakOut(id) {
@@ -65,7 +64,7 @@ function breakOut(id) {
             document.getElementById(id).innerHTML = rest.outText2 + rest.out;
             break;
     }
-}
+};
 
 function breakIn(id) {
     switch (rest.bool) {
@@ -80,45 +79,45 @@ function breakIn(id) {
             document.getElementById(id).innerHTML = rest.inText2 + rest.in;
             break;
     }
-}
+};
 
 var myVar = setInterval(myTimer, 1000);
 function myTimer() {
     var d = new Date();
     var t = d.toLocaleTimeString();
     document.getElementById("time").innerHTML = "Current time is: " + t;
-}
+};
 
 function resetBtnTxt(id, text) {
     setTimeout(function () {
         document.getElementById(id).innerHTML = text;
     }, 3000);
-}
+};
 
 function onClockIn() {
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            alert("Success");
-        }
-    };
+//    xhttp.onreadystatechange = function () {
+//        if (this.readyState != 4 && this.status != 200) {
+//            alert("Connection error");
+//        }
+//    };
     xhttp.open("GET", "php-onclockin.php", true);
     xhttp.send();
-}
+};
 
 
 function onClockOut() {
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            alert("Success");
-        }
-    };
+//    xhttp.onreadystatechange = function () {
+//        if (this.readyState != 4 && this.status != 200) {
+//            alert("Connection error");
+//        }
+//    };
     xhttp.open("GET", "php-onclockout.php", true);
     xhttp.send();
-}
+};
 
-function login(){
+function login() {
     $(function () {
         var text = $("#login").val();
         $("#btn0").click(function () {
