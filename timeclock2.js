@@ -166,3 +166,23 @@ function login() {
         });
     });
 }
+
+document.getElementById("clockInBtn").addEventListener("click", function(){
+    clockIn('clockin');
+    resetBtnTxt('clockin', clock.inText);
+}); 
+
+document.getElementById("clockOutBtn").addEventListener("click", function(){
+    clockOut('clockOut');
+    resetBtnTxt('clockOut', clock.outText); 
+}); 
+
+document.getElementById("breakOutBtn").addEventListener("click", function(){
+    breakOut('breakOut');
+    resetBtnTxt('breakOut', rest.outText); 
+}); 
+
+document.getElementById("breakInBtn").addEventListener("click", function(){
+    breakIn('breakIn'); 
+    resetBtnTxt('breakIn', rest.outText2);
+});
