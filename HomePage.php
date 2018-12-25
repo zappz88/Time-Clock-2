@@ -8,8 +8,8 @@ session_start();
         <title>Time Clock</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="timeclock2.css">
-        <script src="timeclock2.js"></script>
+        <link rel="stylesheet" href="timeclock.css">
+        <script src="timeclock.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
@@ -20,8 +20,8 @@ session_start();
 
             <div class="btns-cont">
                 <div class="btnstxt">
-                    <p id="clockIn">Clock-in time: </p>
-                    <p id="clockOut">Clock-out time: </p>
+                    <p id="clockin">Clock-in time: </p>
+                    <p id="clockout">Clock-out time: </p>
                 </div>
                 
                 <div class="btns">       
@@ -30,8 +30,8 @@ session_start();
                 </div>
 
                 <div  class="btnstxt">
-                    <p id="breakOutBtn">Break-out time: </p>
-                    <p id="breakInBtn">Break-in time: </p>
+                    <p id="breakout">Break-out time: </p>
+                    <p id="breakin">Break-in time: </p>
                 </div>
                 
                 <div class="btns">
