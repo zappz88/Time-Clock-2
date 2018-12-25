@@ -17,13 +17,13 @@ if (!$conn) {
 }
 
 // Check data
-$sql = "Select * from employees where ID = '$userid'";
+$sql = "Select * from employees where EmployeeID = '$userid'";
 $result = mysqli_query($conn, $sql);
 
-if (mysqli_num_rows($result) == 0) {
+if (mysqli_num_rows($result) == 0) {;
     echo "Improper Login";
 } else {
-    header("Location: http://localhost/PhpProject2/clockin.php");
+    header("Location: http://localhost/TimeClock/HomePage.php");
 }
 
 mysqli_close($conn);
