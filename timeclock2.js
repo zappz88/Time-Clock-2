@@ -101,7 +101,7 @@ function onClockIn() {
 //            alert("Connection error");
 //        }
 //    };
-    xhttp.open("GET", "php-onclockin.php", true);
+    xhttp.open("GET", "php_onclockin.php", true);
     xhttp.send();
 };
 
@@ -113,7 +113,7 @@ function onClockOut() {
 //            alert("Connection error");
 //        }
 //    };
-    xhttp.open("GET", "php-onclockout.php", true);
+    xhttp.open("GET", "php_onclockout.php", true);
     xhttp.send();
 };
 
@@ -173,16 +173,16 @@ document.getElementById("clockInBtn").addEventListener("click", function(){
 }); 
 
 document.getElementById("clockOutBtn").addEventListener("click", function(){
-    clockOut('clockOut');
-    resetBtnTxt('clockOut', clock.outText); 
+    clockOut('clockout');
+    resetBtnTxt('clockout', clock.outText2); 
 }); 
 
 document.getElementById("breakOutBtn").addEventListener("click", function(){
-    breakOut('breakOut');
-    resetBtnTxt('breakOut', rest.outText); 
+    breakOut('breakout');
+    resetBtnTxt('breakout', rest.outText); 
 }); 
 
 document.getElementById("breakInBtn").addEventListener("click", function(){
-    breakIn('breakIn'); 
-    resetBtnTxt('breakIn', rest.outText2);
+    breakIn('breakin'); 
+    resetBtnTxt('breakin', rest.inText2);
 });
