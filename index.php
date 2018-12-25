@@ -4,8 +4,8 @@
         <title>Time Clock</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="timeclock2.css">
-        <script src="timeclock2.js"></script>
+        <link rel="stylesheet" href="timeclock.css">
+        <script src="timeclock.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
@@ -14,8 +14,8 @@
             <h3 id="time">Current time is: </h3>
 
             <div class="btns-cont">
-                <form method="POST" action=logincheck.php class="loginInfo" target="_self">
-                    ID: <input type="text" id="login" name="ID" value="Login ID">
+                <form method="POST" action="php_checklogin.php" class="loginInfo" target="_self">
+                    ID: <input type="text" id="login" name="id" placeholder="Login ID">
                     <input type="submit" value="Login">
                 </form>
                 
