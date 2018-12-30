@@ -1,4 +1,4 @@
-var clock = {
+let clock = {
     bool: false,
     in: 0,
     inText: "Clock-in time: ",
@@ -8,7 +8,7 @@ var clock = {
     outText2: "Clock-out time is: "
 };
 
-var rest = {
+let rest = {
     bool: false,
     out: 0,
     outText: "Break-out time is: ",
@@ -81,7 +81,7 @@ function breakIn(id) {
     }
 };
 
-var myVar = setInterval(myTimer, 1000);
+const myVar = setInterval(myTimer, 1000);
 function myTimer() {
     var d = new Date();
     var t = d.toLocaleTimeString();
