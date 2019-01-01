@@ -1,4 +1,4 @@
-let clock = {
+var clock = {
     bool: false,
     in: 0,
     inText: "Clock-in time: ",
@@ -8,7 +8,7 @@ let clock = {
     outText2: "Clock-out time is: "
 };
 
-let rest = {
+var rest = {
     bool: false,
     out: 0,
     outText: "Break-out time is: ",
