@@ -83,8 +83,8 @@ function breakIn(id) {
 
 const myVar = setInterval(myTimer, 1000);
 function myTimer() {
-    var d = new Date();
-    var t = d.toLocaleTimeString();
+    let d = new Date();
+    let t = d.toLocaleTimeString();
     document.getElementById("time").innerHTML = "Current time is: " + t;
 };
 
@@ -95,7 +95,7 @@ function resetBtnTxt(id, text) {
 };
 
 function onClockIn() {
-    var xhttp = new XMLHttpRequest();
+    let xhttp = new XMLHttpRequest();
 //    xhttp.onreadystatechange = function () {
 //        if (this.readyState != 4 && this.status != 200) {
 //            alert("Connection error");
@@ -107,7 +107,7 @@ function onClockIn() {
 
 
 function onClockOut() {
-    var xhttp = new XMLHttpRequest();
+    let xhttp = new XMLHttpRequest();
 //    xhttp.onreadystatechange = function () {
 //        if (this.readyState != 4 && this.status != 200) {
 //            alert("Connection error");
