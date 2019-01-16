@@ -65,8 +65,8 @@ session_start();
             function clockIn(id) {
                 switch (clock.bool) {
                     case false:
-                        var d = new Date();
-                        var t = d.toLocaleTimeString();
+                        let d = new Date();
+                        let t = d.toLocaleTimeString();
                         clock.bool = true;
                         clock.in = t;
                         document.getElementById(id).innerHTML = clock.inText + clock.in;
@@ -84,8 +84,8 @@ session_start();
                         document.getElementById(id).innerHTML = clock.outText;
                         break;
                     case true:
-                        var d = new Date();
-                        var t = d.toLocaleTimeString();
+                        let d = new Date();
+                        let t = d.toLocaleTimeString();
                         clock.bool = false;
                         clock.out = t;
                         document.getElementById(id).innerHTML = clock.outText2 + clock.out;
@@ -138,27 +138,56 @@ session_start();
                 }, 3000);
             };
 
+            function currentDate() {
+                let date = new Date();
+                let year = date.getFullYear();
+                let month = date.getMonth() + 1;
+                let day = date.getDate();
+                return month + '/' + day + '/' + year;
+            };
+
+            function currentTime() {
+                let date = new Date();
+                let hours = date.getHours();
+                if (hours > 12) {
+                    hours = hours - 12;
+                }
+                let minutes = date.getMinutes();
+                let seconds = date.getSeconds();
+                return hours + ':' + minutes;
+            };
+
             function onClockIn() {
-                var xhttp = new XMLHttpRequest();
+                var xhr = new XMLHttpRequest();
+                var data = {
+                    date: "date=" + currentDate(),
+                    time: "time=" + currentTime()
+                };
 //    xhttp.onreadystatechange = function () {
 //        if (this.readyState != 4 && this.status != 200) {
 //            alert("Connection error");
 //        }
-//    };
-                xhttp.open("GET", "php_onclockin.php", true);
-                xhttp.send();
+//    };        
+                xhr.open("POST", "php_onclockin.php", true);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.send(data.date + '&' + data.time);
             };
 
 
             function onClockOut() {
-                var xhttp = new XMLHttpRequest();
+                var xhr = new XMLHttpRequest();
+                var data = {
+                    date: "date=" + currentDate(),
+                    time: "time=" + currentTime()
+                };
 //    xhttp.onreadystatechange = function () {
 //        if (this.readyState != 4 && this.status != 200) {
 //            alert("Connection error");
 //        }
 //    };
-                xhttp.open("GET", "php_onclockout.php", true);
-                xhttp.send();
+                xhr.open("POST", "php_onclockout.php", true);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.send(data.date + '&' + data.time);
             };
 
             document.getElementById("clockInBtn").addEventListener("click", function () {
