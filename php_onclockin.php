@@ -1,28 +1,31 @@
 <?php
 
+//Initiate session and access session variables
 session_start();
 $userid = $_SESSION['id'];
 
+//Database connection variables
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "mydb";
 
+//Sent data
+$date = $_POST["date"];
+$time = $_POST["time"];
+
 // Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
+$conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
-
 // Insert data
-$sql = "INSERT INTO times (UserID, Status) VALUES ('$userid', 'Clocked In');";
-if (mysqli_query($conn, $sql)) {
+$sql = "INSERT INTO times (UserID, Status, Date, Time) VALUES ('$userid', 'Clocked In', '$date', '$time');";
+if ($conn->query($sql) == true) {
     echo "Data added successfully";
 } else {
-    echo "Error adding data: " . $sql . mysqli_error($conn);
+    echo "Error adding data: " . $sql . "<br>" . $conn->error;
 }
-
-mysqli_close($conn);
+$conn->close();
 ?>
