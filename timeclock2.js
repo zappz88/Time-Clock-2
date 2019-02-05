@@ -1,3 +1,5 @@
+/*No longer in use*/
+
 var clock = {
     bool: false,
     in: 0,
