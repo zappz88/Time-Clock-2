@@ -1,0 +1,72 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-family: Arial;
+    font-weight: bold;
+    background-image: url("https://images.axios.com/Sx5BclO5J9YlC4m1FChQ25MbMac=/0x568:5760x3808/1920x1080/2018/04/03/1522766252447.jpg");
+    color: black;
+}
+
+button{
+    background-color: green;
+    width: 200px;
+    height: 100px;
+    color: white;
+    margin-bottom: 35px;
+}
+
+.main{
+    margin: 10% 25%;
+    height: 500px;
+    width: 750px;
+    background-color: #ffe08f;
+    border: solid 2px black;
+
+}
+
+.btns-cont{
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+}
+
+.btns-left{
+    display: flex;
+    flex-direction: column;
+    width: 375px;
+    margin-left: 115px;
+    justify-content: flex-start;
+}
+
+.btns-right{
+    display: flex;
+    flex-direction: column;
+    width: 375px;
+    justify-content: flex-start;
+}
+
+h3{
+    display: flex;
+    justify-content: center;
+}
+
+.loginInfo{
+    display: flex;
+    justify-content: center;
+}
+
+.btnLogin{
+    background-color: green;
+    width: 100px;
+    height: 100px;
+    color: white;
+    font-family: Arial;
+    font-weight: bold;
+    margin: 30px 30px;
+    font-size: 32px;
+}
+
+.error{
+    color: red;
+}
