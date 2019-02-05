@@ -8,7 +8,7 @@ session_start();
         <title>Time Clock</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="timeclockphp.css">
+        <link rel="stylesheet" href="homepagecss.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
@@ -16,28 +16,25 @@ session_start();
         <div class="main">
 
             <h3 id="time">Current time is: </h3>
-
+            
+            
             <div class="btns-cont">
-                <div class="btnstxt">
+                <div class="btns-left">
                     <p id="clockin">Clock-in time: </p>
-                    <p id="clockout">Clock-out time: </p>
-                </div>
-
-                <div class="btns">       
                     <button type="button" id="clockInBtn">Clock In</button>
-                    <button type="button" id="clockOutBtn">Clock Out</button>
-                </div>
-
-                <div  class="btnstxt">
                     <p id="breakout">Break-out time: </p>
-                    <p id="breakin">Break-in time: </p>
+                    <button type="button" id="breakOutBtn">Break Out</button>
                 </div>
 
-                <div class="btns">
-                    <button type="button" id="breakOutBtn">Break Out</button>
+                <div class="btns-right">
+                    <p id="clockout">Clock-out time: </p>
+                    <button type="button" id="clockOutBtn">Clock Out</button>
+                    <p id="breakin">Break-in time: </p>
                     <button type="button" id="breakInBtn">Break In</button>
                 </div>
             </div>
+            
+            
 
         </div>
 
@@ -168,7 +165,7 @@ session_start();
 //            alert("Connection error");
 //        }
 //    };        
-                xhr.open("POST", "php_onclockin.php", true);
+                xhr.open("POST", "timeclock_php_onclockin.php", true);
                 xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xhr.send(data.date + '&' + data.time);
             };
@@ -185,7 +182,7 @@ session_start();
 //            alert("Connection error");
 //        }
 //    };
-                xhr.open("POST", "php_onclockout.php", true);
+                xhr.open("POST", "timeclock_php_onclockout.php", true);
                 xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xhr.send(data.date + '&' + data.time);
             };
