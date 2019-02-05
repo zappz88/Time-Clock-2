@@ -1,110 +1,211 @@
-<!DOCTYPE html>
 <?php
 session_start();
-$_SESSION['errlogin'] = "Improper Login";
 ?>
 
+<!DOCTYPE html>
 <html>
     <head>
         <title>Time Clock</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="timeclockphp.css">
+        <link rel="stylesheet" href="homepagecss.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
+
         <div class="main">
 
             <h3 id="time">Current time is: </h3>
-
-            <div class="btns-cont">
-                <form method="POST" action="php_checklogin.php" class="loginInfo" target="_self">
-                    ID: <input type="text" id="login" name="id" value="">
-                    <input type="submit" value="Login">
-                </form>
-
-                <div class="loginLayout">
-                    <button type="button" id="btn0" class="btnLogin">0</button>
-                    <button type="button" id="btn1" class="btnLogin">1</button>
-                    <button type="button" id="btn2" class="btnLogin">2</button>
-                    <button type="button" id="btn3" class="btnLogin">3</button>
-                    <button type="button" id="btn4" class="btnLogin">4</button>
-                    <button type="button" id="btn5" class="btnLogin">5</button>
-                    <button type="button" id="btn6" class="btnLogin">6</button>
-                    <button type="button" id="btn7" class="btnLogin">7</button>
-                    <button type="button" id="btn8" class="btnLogin">8</button>
-                    <button type="button" id="btn9" class="btnLogin">9</button>
+            
+            
+            <div style="display:flex; flex-direction:row; justify-content: space-between;">
+                <div class="btns-left">
+                    <p id="clockin">Clock-in time: </p>
+                    <button type="button" id="clockInBtn">Clock In</button>
+                    <p id="breakout">Break-out time: </p>
+                    <button type="button" id="breakOutBtn">Break Out</button>
                 </div>
 
-                <div id="resetBtnDiv" class="resetBtnDiv">
-                    <button type="button" id="btnReset" class="btnLoginReset">Reset</button>
+                <div class="btns-right">
+                    <p id="clockout">Clock-out time: </p>
+                    <button type="button" id="clockOutBtn">Clock Out</button>
+                    <p id="breakin">Break-in time: </p>
+                    <button type="button" id="breakInBtn">Break In</button>
                 </div>
-
             </div>
+            
+            
 
         </div>
+
         <script>
-            function login() {
-                $(function () {
-                    var text = $("#login").val();
-                    $("#btn0").click(function () {
-                        text += "0";
-                        $("#login").val(text);
-                    });
-                    $("#btn1").click(function () {
-                        text += "1";
-                        $("#login").val(text);
-                    });
-                    $("#btn2").click(function () {
-                        text += "2";
-                        $("#login").val(text);
-                    });
-                    $("#btn3").click(function () {
-                        text += "3";
-                        $("#login").val(text);
-                    });
-                    $("#btn4").click(function () {
-                        text += "4";
-                        $("#login").val(text);
-                    });
-                    $("#btn5").click(function () {
-                        text += "5";
-                        $("#login").val(text);
-                    });
-                    $("#btn6").click(function () {
-                        text += "6";
-                        $("#login").val(text);
-                    });
-                    $("#btn7").click(function () {
-                        text += "7";
-                        $("#login").val(text);
-                    });
-                    $("#btn8").click(function () {
-                        text += "8";
-                        $("#login").val(text);
-                    });
-                    $("#btn9").click(function () {
-                        text += "9";
-                        $("#login").val(text);
-                    });
-                    $("#btnReset").click(function () {
-                        text = "";
-                        $("#login").val(text);
-                    });
-                });
+            var clock = {
+                bool: false,
+                in: 0,
+                inText: "Clock-in time: ",
+                inText2: "Already clocked in: ",
+                out: 0,
+                outText: "Not clocked in.",
+                outText2: "Clock-out time is: "
             };
 
-            document.getElementById("btn0").addEventListener("click", login);
-            document.getElementById("btn1").addEventListener("click", login);
-            document.getElementById("btn2").addEventListener("click", login);
-            document.getElementById("btn3").addEventListener("click", login);
-            document.getElementById("btn4").addEventListener("click", login);
-            document.getElementById("btn5").addEventListener("click", login);
-            document.getElementById("btn6").addEventListener("click", login);
-            document.getElementById("btn7").addEventListener("click", login);
-            document.getElementById("btn8").addEventListener("click", login);
-            document.getElementById("btn9").addEventListener("click", login);
-            document.getElementById("btnReset").addEventListener("click", login);
+            var rest = {
+                bool: false,
+                out: 0,
+                outText: "Break-out time is: ",
+                outText2: "Already on break: ",
+                in: 0,
+                inText: "Not on break.",
+                inText2: "Break-in time is: "
+            };
+
+            function clockIn(id) {
+                switch (clock.bool) {
+                    case false:
+                        let d = new Date();
+                        let t = d.toLocaleTimeString();
+                        clock.bool = true;
+                        clock.in = t;
+                        document.getElementById(id).innerHTML = clock.inText + clock.in;
+                        onClockIn();
+                        break;
+                    case true:
+                        document.getElementById(id).innerHTML = clock.inText2 + clock.in;
+                        break;
+                };
+            };
+
+            function clockOut(id) {
+                switch (clock.bool) {
+                    case false:
+                        document.getElementById(id).innerHTML = clock.outText;
+                        break;
+                    case true:
+                        let d = new Date();
+                        let t = d.toLocaleTimeString();
+                        clock.bool = false;
+                        clock.out = t;
+                        document.getElementById(id).innerHTML = clock.outText2 + clock.out;
+                        onClockOut();
+                        break;
+                };
+            };
+
+
+            function breakOut(id) {
+                switch (rest.bool) {
+                    case false:
+                        var d = new Date();
+                        var t = d.toLocaleTimeString();
+                        rest.bool = true;
+                        rest.out = t;
+                        document.getElementById(id).innerHTML = rest.outText + rest.out;
+                        break;
+                    case true:
+                        document.getElementById(id).innerHTML = rest.outText2 + rest.out;
+                        break;
+                };
+            };
+
+            function breakIn(id) {
+                switch (rest.bool) {
+                    case false:
+                        document.getElementById(id).innerHTML = rest.inText;
+                        break;
+                    case true:
+                        var d = new Date();
+                        var t = d.toLocaleTimeString();
+                        rest.bool = false;
+                        rest.in = t;
+                        document.getElementById(id).innerHTML = rest.inText2 + rest.in;
+                        break;
+                };
+            };
+
+            var myVar = setInterval(myTimer, 1000);
+            function myTimer() {
+                var d = new Date();
+                var t = d.toLocaleTimeString();
+                document.getElementById("time").innerHTML = "Current time is: " + t;
+            };
+
+            function resetBtnTxt(id, text) {
+                setTimeout(function () {
+                    document.getElementById(id).innerHTML = text;
+                }, 3000);
+            };
+
+            function currentDate() {
+                let date = new Date();
+                let year = date.getFullYear();
+                let month = date.getMonth() + 1;
+                let day = date.getDate();
+                return month + '/' + day + '/' + year;
+            };
+
+            function currentTime() {
+                let date = new Date();
+                let hours = date.getHours();
+                if (hours > 12) {
+                    hours = hours - 12;
+                }
+                let minutes = date.getMinutes();
+                let seconds = date.getSeconds();
+                return hours + ':' + minutes;
+            };
+
+            function onClockIn() {
+                var xhr = new XMLHttpRequest();
+                var data = {
+                    date: "date=" + currentDate(),
+                    time: "time=" + currentTime()
+                };
+//    xhttp.onreadystatechange = function () {
+//        if (this.readyState != 4 && this.status != 200) {
+//            alert("Connection error");
+//        }
+//    };        
+                xhr.open("POST", "timeclock_php_onclockin.php", true);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.send(data.date + '&' + data.time);
+            };
+
+
+            function onClockOut() {
+                var xhr = new XMLHttpRequest();
+                var data = {
+                    date: "date=" + currentDate(),
+                    time: "time=" + currentTime()
+                };
+//    xhttp.onreadystatechange = function () {
+//        if (this.readyState != 4 && this.status != 200) {
+//            alert("Connection error");
+//        }
+//    };
+                xhr.open("POST", "timeclock_php_onclockout.php", true);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.send(data.date + '&' + data.time);
+            };
+
+            document.getElementById("clockInBtn").addEventListener("click", function () {
+                clockIn('clockin');
+                resetBtnTxt('clockin', clock.inText);
+            });
+
+            document.getElementById("clockOutBtn").addEventListener("click", function () {
+                clockOut('clockout');
+                resetBtnTxt('clockout', clock.outText2);
+            });
+
+            document.getElementById("breakOutBtn").addEventListener("click", function () {
+                breakOut('breakout');
+                resetBtnTxt('breakout', rest.outText);
+            });
+
+            document.getElementById("breakInBtn").addEventListener("click", function () {
+                breakIn('breakin');
+                resetBtnTxt('breakin', rest.inText2);
+            });
         </script>
     </body>
 </html>
