@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
 session_start();
-$_SESSION['errlogin'] = "Improper Login Credentials";
 ?>
 
 <html>
@@ -39,6 +38,8 @@ $_SESSION['errlogin'] = "Improper Login Credentials";
                 <div id="resetBtnDiv" class="resetBtnDiv">
                     <button type="button" id="btnReset" class="btnLoginReset">Reset</button>
                 </div>
+                
+                <div></div>
 
             </div>
 
@@ -99,8 +100,9 @@ $_SESSION['errlogin'] = "Improper Login Credentials";
                         $("#login").val(text);
                     });
                 });
-            }
-            ;
+            };
+            
+            login();
 
             document.getElementById("btn0").addEventListener("click", login);
             document.getElementById("btn1").addEventListener("click", login);
