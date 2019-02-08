@@ -12,3 +12,5 @@ $clockIn = $_SESSION['clockIn'];
 
 $_SESSION['breakOutTime'] = $_POST['breakOutTime'];
 $breakOutTime = $_SESSION['breakOutTime'];
+
+?>
