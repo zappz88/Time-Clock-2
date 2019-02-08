@@ -13,22 +13,24 @@ button{
     width: 200px;
     height: 100px;
     color: white;
+    font-family: Arial;
+    font-weight: bold;
     margin-bottom: 35px;
 }
 
 .main{
     margin: 10% 25%;
-    height: 500px;
+    height: 535px;
     width: 750px;
     background-color: #ffe08f;
     border: solid 2px black;
-
 }
 
 .btns-cont{
     display: flex; 
-    flex-direction: column; 
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 360px;
 }
 
 .btns-left{
@@ -51,22 +53,15 @@ h3{
     justify-content: center;
 }
 
-.loginInfo{
-    display: flex;
+#exit{
+    height: 110px; 
+    display: flex; 
     justify-content: center;
 }
 
-.btnLogin{
-    background-color: green;
-    width: 100px;
-    height: 100px;
-    color: white;
-    font-family: Arial;
-    font-weight: bold;
-    margin: 30px 30px;
-    font-size: 32px;
+#exitBtn{
+    background-color: red;
 }
-
 .error{
     color: red;
 }
