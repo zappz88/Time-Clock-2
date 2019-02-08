@@ -32,8 +32,6 @@ class DataSort {
 $breakIn =  new DataSort($breakInTime);
 $breakOut = new DataSort($breakOutTime);
 
-echo $breakIn->time;
-
 $hours = 0;
 $minutes = 0;
 
