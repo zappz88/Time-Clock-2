@@ -13,8 +13,8 @@ $clockInDate = $_SESSION['clockInDate'];
 class DataSort {
 
     //Variables within PHP classes cannot be located outside functions at least in PHP without error
-    function DataSort() {
-        $test = json_decode($_POST['clockInTime']);
+    function DataSort($data) {
+        $test = json_decode($data);
         $this->time = $test->time;
         $this->hours = $test->hours;
         $this->minutes = $test->minutes;
@@ -22,7 +22,7 @@ class DataSort {
 
 }
 
-$clockIn = new DataSort();
+$clockIn = new DataSort($clockInTime);
 $_SESSION['clockIn'] = $clockIn;
 
 
