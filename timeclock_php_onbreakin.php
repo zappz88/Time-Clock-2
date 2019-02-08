@@ -3,12 +3,19 @@
 //Initiate session and access session variables
 session_start();
 $userid = $_SESSION['id'];
+
 $clockInTime = $_SESSION['clockInTime'];
+
 $clockInDate = $_SESSION['clockInDate'];
+
 $clockOutTime = $_SESSION['clockOutTime'];
+
 $clockOutDate = $_SESSION['clockOutDate'];
+
 $clockIn = $_SESSION['clockIn'];
+
 $breakOutTime = $_SESSION['breakOutTime'];
+
 $_SESSION['breakInTime'] = $_POST['breakInTime'];
 $breakInTime = $_SESSION['breakInTime'];
 
