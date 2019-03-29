@@ -1,3 +1,8 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
 body{
     display: flex;
     justify-content: center;
@@ -5,20 +10,8 @@ body{
     font-family: Arial;
     font-weight: bold;
     background-image: url("https://images.axios.com/Sx5BclO5J9YlC4m1FChQ25MbMac=/0x568:5760x3808/1920x1080/2018/04/03/1522766252447.jpg");
-    background-size: 100vw 100vh;
+    background-size: cover;
     color: black;
-    font-size: 1vw;
-}
-
-button{
-    background-color: green;
-    color: white;
-    height: 10vh;
-    width: 10vw;
-    font-family: Arial;
-    font-weight: bold;
-    margin-bottom: 1vh;
-    font-size: 1vw;
 }
 
 .main{
@@ -27,6 +20,17 @@ button{
     width: 40vw;
     background-color: #ffe08f;
     border: solid 2px black;
+}
+
+.btn{
+    background-color: green;
+    color: white;
+    height: 10vh;
+    width: 10vw;
+    margin-bottom: 1vh;
+    font-size: 18px;
+    font-family: Arial;
+    font-weight: bold;
 }
 
 .btns-cont{
@@ -42,7 +46,7 @@ button{
     flex-direction: column;
     height: 30vh;
     width: 20vw;
-    margin-left: 6vw;
+    margin: 5% 0% 15% 15%;
     justify-content: flex-start;
 }
 
@@ -51,30 +55,107 @@ button{
     flex-direction: column;
     height: 30vh;
     width: 20vw;
+    margin: 5% 15%;
     justify-content: flex-start;
-/*    margin-right: 1vw;*/
 }
 
 h3{
     display: flex;
     justify-content: center;
+    font-size: 24px;
 }
 
-#exit{
+.exit{
     height: 10vh;
     width: 40vw;
     display: flex;
     justify-content: center;
 }
 
-#exitBtn{
+.exitBtn{
+    font-size: 18px;
+    font-family: Arial;
+    font-weight: bold;
+    color: white;
     height: 8vh;
+    width: 20vw;
     margin-top: 1vh;
     margin-right: 1vw;
     background-color: red;
 }
-.error{
-    color: red;
-}
 
+@media screen and (max-width: 768px){
+    body{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        background-color: #ffe08f;
+        background-image: none;
+    }
+
+    .main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+        width: 100%;
+        margin: 0px;
+        border: none;
+    }
+
+    .btn{
+        background-color: green;
+        color: white;
+        height: 100px;
+        width: 100px;
+        margin-bottom: 1vh;
+        font-size: 18px;
+        font-family: Arial;
+        font-weight: bold;
+    }
+
+    .btns-cont{
+        display: flex; 
+        flex-direction: row;
+        margin: 0 auto;
+        height: 30vh;
+        width: 70%;
+    }
+
+    .btns-left{
+        display: flex;
+        flex-direction: column;
+        height: 30vh;
+        width: 20vw;
+        justify-content: flex-start;
+    }
+
+    .btns-right{
+        display: flex;
+        flex-direction: column;
+        height: 30vh;
+        width: 20vw;
+        justify-content: flex-start;
+    }
+
+    .exit{
+        height: 10vh;
+        width: 80%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .exitBtn{
+        background-color: red;
+        color: white;
+        height: 50px;
+        width: 100px;
+        margin: 3vh 0px;
+        font-size: 18px;
+        font-family: Arial;
+        font-weight: bold;
+    }
+}
 
