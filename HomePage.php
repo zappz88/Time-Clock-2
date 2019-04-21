@@ -19,19 +19,19 @@ session_start();
             <div class="btns-cont">
                 <div class="btns-left">
                     <p id="clockin">Clock-in time: </p>
-                    <button type="button" id="clockInBtn">Clock In</button>
+                    <button type="button" id="clockInBtn" class="btn">Clock In</button>
                     <p id="breakout">Break-out time: </p>
-                    <button type="button" id="breakOutBtn">Break Out</button>
+                    <button type="button" id="breakOutBtn" class="btn">Break Out</button>
                 </div>
 
                 <div class="btns-right">
                     <p id="clockout">Clock-out time: </p>
-                    <button type="button" id="clockOutBtn">Clock Out</button>
+                    <button type="button" id="clockOutBtn" class="btn">Clock Out</button>
                     <p id="breakin">Break-in time: </p>
-                    <button type="button" id="breakInBtn">Break In</button>
+                    <button type="button" id="breakInBtn" class="btn">Break In</button>
                 </div>
             </div>
-            <div id="exit"><button type='button' id="exitBtn">Exit</button></div>
+            <div id="exit" class="exit"><button type='button' id="exitBtn" class="exitBtn">Exit</button></div>
         </div>
 
         <script>
@@ -58,10 +58,9 @@ session_start();
             function clockIn(id) {
                 switch (clock.bool) {
                     case false:
-                        let d = new Date();
-                        let t = d.toLocaleTimeString();
+                        let d = new Date().toLocaleTimeString();
                         clock.bool = true;
-                        clock.in = t;
+                        clock.in = d;
                         document.getElementById(id).innerHTML = clock.inText + clock.in;
                         onClockIn();
                         break;
@@ -69,9 +68,7 @@ session_start();
                         document.getElementById(id).innerHTML = clock.inText2 + clock.in;
                         break;
                 }
-                ;
-            }
-            ;
+            };
 
             function clockOut(id) {
                 switch (clock.bool) {
@@ -79,69 +76,67 @@ session_start();
                         document.getElementById(id).innerHTML = clock.outText;
                         break;
                     case true:
-                        let d = new Date();
-                        let t = d.toLocaleTimeString();
+                        let d = new Date().toLocaleTimeString();
                         clock.bool = false;
-                        clock.out = t;
+                        clock.out = d;
                         document.getElementById(id).innerHTML = clock.outText2 + clock.out;
                         onClockOut();
                         break;
                 }
-                ;
-            }
-            ;
+            };
 
 
             function breakOut(id) {
-                switch (rest.bool) {
-                    case false:
-                        var d = new Date();
-                        var t = d.toLocaleTimeString();
-                        rest.bool = true;
-                        rest.out = t;
-                        document.getElementById(id).innerHTML = rest.outText + rest.out;
-                        onBreakOut();
-                        break;
-                    case true:
-                        document.getElementById(id).innerHTML = rest.outText2 + rest.out;
-                        break;
+                if(clock.bool === true){
+                    switch (rest.bool) {
+                        case false:
+                            var d = new Date().toLocaleTimeString();
+                            rest.bool = true;
+                            rest.out = d;
+                            document.getElementById(id).innerHTML = rest.outText + rest.out;
+                            onBreakOut();
+                            break;
+                        case true:
+                            document.getElementById(id).innerHTML = rest.outText2 + rest.out;
+                            break;
+                            }
+                        }
+                else{
+                    document.getElementById(id).innerHTML = clock.outText;
                 }
-                ;
-            }
-            ;
+            };
 
             function breakIn(id) {
-                switch (rest.bool) {
-                    case false:
-                        document.getElementById(id).innerHTML = rest.inText;
-                        break;
-                    case true:
-                        var d = new Date();
-                        var t = d.toLocaleTimeString();
-                        rest.bool = false;
-                        rest.in = t;
-                        document.getElementById(id).innerHTML = rest.inText2 + rest.in;
-                        onBreakIn();
-                        break;
+                if(clock.bool === true){
+                    switch (rest.bool) {
+                        case false:
+                            document.getElementById(id).innerHTML = rest.inText;
+                            break;
+                        case true:
+                            var d = new Date().toLocaleTimeString();
+                            rest.bool = false;
+                            rest.in = d;
+                            document.getElementById(id).innerHTML = rest.inText2 + rest.in;
+                            onBreakIn();
+                            break;
+                            }
                 }
-                ;
-            }
-            ;
+                else{
+                    document.getElementById(id).innerHTML = clock.outText;
+                    }
+            };
 
             var myVar = setInterval(myTimer, 1000);
             function myTimer() {
-                var d = new Date();
-                var t = d.toLocaleTimeString();
-                document.getElementById('time').innerHTML = 'Current time is: ' + t;
-            }
-            ;
+                var d = new Date().toLocaleTimeString();
+                document.getElementById('time').innerHTML = 'Current time is: ' + d;
+            };
 
             function resetBtnTxt(id, text) {
                 setTimeout(function () {
                     document.getElementById(id).innerHTML = text;
                 }, 3000);
-            }
-            ;
+            };
 
             function currentDate() {
                 let date = new Date();
@@ -149,102 +144,98 @@ session_start();
                 let month = date.getMonth() + 1;
                 let day = date.getDate();
                 return month + '/' + day + '/' + year;
-            }
-            ;
+            };
 
             function currentTime() {
                 let date = new Date();
                 let hours = date.getHours();
                 if (hours > 12) {
                     hours = hours - 12;
-                }
-                ;
+                };
                 let minutes = date.getMinutes();
                 if (minutes < 10) {
                     minutes = '0' + minutes;
-                }
-                ;
+                };
                 let time = {
                     hours: hours,
                     minutes: minutes,
                     time: hours + ':' + minutes
                 };
                 return JSON.stringify(time);
-            }
-            ;
+            };
 
             function onClockIn() {
                 var xhr = new XMLHttpRequest();
                 var data = {
                     date: 'clockInDate=' + currentDate(),
-                    time: 'clockInTime=' + currentTime()
+                    time: 'clockInTime=' + currentTime(),
+                    functionToCall: 'functionToCall=clockIn'
                 };
-//                xhr.onreadystatechange = function () {
-//                    if (this.readyState == 4 && this.status == 200) {
-//                        console.log(this.responseText);
-//                    }
-//                };
-                xhr.open('POST', 'timeclock_php_onclockin.php', true);
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        console.log(this.responseText);
+                    }
+                };
+                xhr.open('POST', 'timeclockPHPMaster.php', true);
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-                xhr.send(data.date + '&' + data.time);
-            }
-            ;
+                xhr.send(`${data.date}&${data.time}&${data.functionToCall}`);
+            };
 
 
             function onClockOut() {
                 var xhr = new XMLHttpRequest();
                 var data = {
                     date: 'clockOutDate=' + currentDate(),
-                    time: 'clockOutTime=' + currentTime()
+                    time: 'clockOutTime=' + currentTime(),
+                    functionToCall: 'functionToCall=clockOut'
                 };
-//                xhr.onreadystatechange = function () {
-//                    if (this.readyState == 4 && this.status == 200) {
-//                        console.log(this.responseText);
-//                    }
-//                };
-                xhr.open('POST', 'timeclock_php_onclockout.php', true);
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        console.log(this.responseText);
+                    }
+                };
+                xhr.open('POST', 'timeclockPHPMaster.php', true);
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-                xhr.send(data.date + '&' + data.time);
-            }
-            ;
+                xhr.send(`${data.date}&${data.time}&${data.functionToCall}`);
+            };
 
             function onBreakOut() {
                 var xhr = new XMLHttpRequest();
                 var data = {
                     date: 'breakOutDate=' + currentDate(),
-                    time: 'breakOutTime=' + currentTime()
+                    time: 'breakOutTime=' + currentTime(),
+                    functionToCall: 'functionToCall=breakOut'
                 };
                 xhr.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
                         console.log(this.responseText);
                     }
                 };
-                xhr.open('POST', 'timeclock_php_onbreakout.php', true);
+                xhr.open('POST', 'timeclockPHPMaster.php', true);
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-                xhr.send(data.date + '&' + data.time);
-            }
-            ;
+                xhr.send(`${data.date}&${data.time}&${data.functionToCall}`);
+            };
 
             function onBreakIn() {
                 var xhr = new XMLHttpRequest();
                 var data = {
                     date: 'breakInDate=' + currentDate(),
-                    time: 'breakInTime=' + currentTime()
+                    time: 'breakInTime=' + currentTime(),
+                    functionToCall: 'functionToCall=breakIn'
                 };
                 xhr.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
                         console.log(this.responseText);
                     }
                 };
-                xhr.open('POST', 'timeclock_php_onbreakin.php', true);
+                xhr.open('POST', 'timeclockPHPMaster.php', true);
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-                xhr.send(data.date + '&' + data.time);
-            }
-            ;
+                xhr.send(`${data.date}&${data.time}&${data.functionToCall}`);
+            };
 
             function exit() {
                 location.href = 'http://localhost/TimeClock/index.php';
-            }
+            };
 
             document.getElementById('exitBtn').addEventListener('click', exit);
 
