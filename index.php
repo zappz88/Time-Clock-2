@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <?php
 session_start();
 ?>
@@ -16,12 +16,12 @@ session_start();
 
             <h3 id="time">Current time is: </h3>
 
-            <div class="btns-cont">
-                <form method="POST" action="timeclock_php_logincheck.php" class="loginInfo" target="_self">
-                    ID: <input type="text" id="login" name="id" value="">
+            
+            <form method="POST" action="timeclockPHPMaster.php" class="loginInfo" target="_self">
+                    ID: <input type="text" id="login" name="id" value="" required>
                     <input type="submit" value="Login">
                 </form>
-
+            <div class="btnDiv">
                 <div class="loginLayout">
                     <button type="button" id="btn0" class="btnLogin">0</button>
                     <button type="button" id="btn1" class="btnLogin">1</button>
@@ -38,8 +38,6 @@ session_start();
                 <div id="resetBtnDiv" class="resetBtnDiv">
                     <button type="button" id="btnReset" class="btnLoginReset">Reset</button>
                 </div>
-                
-                <div></div>
 
             </div>
 
@@ -47,9 +45,8 @@ session_start();
         <script>
             var myVar = setInterval(myTimer, 1000);
             function myTimer() {
-                var d = new Date();
-                var t = d.toLocaleTimeString();
-                document.getElementById("time").innerHTML = "Current time is: " + t;
+                var d = new Date().toLocaleTimeString();
+                document.getElementById("time").innerHTML = "Current time is: " + d;
             };
             
             function login() {
