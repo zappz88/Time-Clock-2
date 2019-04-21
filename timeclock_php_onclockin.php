@@ -38,7 +38,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-// Insert data
+// Insert data 
 $sql = "INSERT INTO times (UserID, Status, Date, Time) VALUES ('$userid', 'Clocked In', '$clockInDate', '$clockIn->time');";
 if ($conn->query($sql) == true) {
     echo "Data added successfully";
