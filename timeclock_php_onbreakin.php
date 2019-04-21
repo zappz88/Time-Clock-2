@@ -54,4 +54,4 @@ if ($breakOutTime) {
 }
 
 $hours = ($hours + $minutes) / 60;
-$_SESSION['breakTime'] = $hours;
+$_SESSION['breakTime'] = $hours; 
