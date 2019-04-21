@@ -27,4 +27,4 @@ $dbname = "mydb";
         }
 
         $conn->close();
-?>
+?> 
