@@ -77,4 +77,4 @@ if ($conn->query($sql) == true) {
     echo "Error adding data: " . $sql . "<br>" . $conn->error;
 }
 $conn->close();
-?>
+?> 
