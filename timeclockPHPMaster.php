@@ -36,7 +36,7 @@ class TimeClock {
     }
 
     public function clockOut() {
-        if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
+        if (isset($_SESSION['clockIn']) && !empty($_SESSION['clockIn'])) {
             $userID = $_SESSION['id'];
             $status = $_SESSION{'status'};
             $clockOutTimeObj = json_decode($_SESSION['clockOutTime']);
@@ -181,8 +181,14 @@ if (isset($_POST) && !empty($_POST)) {
             case 'breakInTime':
                 $_SESSION['breakInTime'] = $_POST['breakInTime'];
                 break;
+            case 'breakInDate':
+                $_SESSION['breakInDate'] = $_POST['breakInDate'];
+                break;
             case 'breakOutTime':
                 $_SESSION['breakOutTime'] = $_POST['breakOutTime'];
+                break;
+            case 'breakOutDate':
+                $_SESSION['breakOutDate'] = $_POST['breakOutDate'];
                 break;
             default:
                 break;
